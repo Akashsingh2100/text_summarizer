@@ -1,19 +1,23 @@
 {
+    "version": 2,
     "builds": [
-        {
-            "src": "./app.py",
-            "use": "@vercel/python"
-        }
+      {
+        "src": "./app.py",  
+        "use": "@now/python",  
+        "config": { "maxLambdaSize": "75mb" }  
+      }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "./app.py"
-        }
+      {
+        "src": "/(.*)",
+        "dest": "/app.py"
+      }
     ],
-    "rewrites": [
-        {
-             "source": "/(.*)", "destination": "/"
-        }
-    ] 
-}
+
+    "install": [
+      {
+        "include": ["requirements.txt"]
+      }
+    ]
+  }
+  
